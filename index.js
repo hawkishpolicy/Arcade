@@ -46,19 +46,14 @@ function newGame() {
       row.appendChild(cell);
 
       cell.addEventListener("click", function () {
-        try {
-          actualBoard[i][k] = currentTurn;
-          console.log("this is the board", actualBoard);
-          cell.innerText = currentTurn;
-          let winningPlayer = whoWon();
-          if (winningPlayer) {
-            alert("Congratulations " + winningPlayer + " !!!");
-            updateScore(winningPlayer);
-          } else {
-            toggleTurn();
-          }
-        } catch (error) {
-          console.log(error);
+        actualBoard[i][k] = currentTurn;
+        cell.innerText = currentTurn;
+        let winningPlayer = whoWon();
+        if (winningPlayer) {
+          alert("Congratulations " + winningPlayer + " !!!");
+          updateScore(winningPlayer);
+        } else {
+          toggleTurn();
         }
       });
     }
@@ -67,8 +62,26 @@ function newGame() {
 }
 
 const newGameButton = document.getElementById("newGame");
-
 newGameButton.addEventListener("click", newGame);
 
-// function clearBoard() {}
-// document.querySelectorAll("td")
+const resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", clearBoard);
+function clearBoard() {
+  let oldGameBoard = document.querySelectorAll("td");
+  oldGameBoard.forEach((cell) => {
+    cell.innerText = "";
+  });
+  actualBoard = [[], [], []];
+  console.log(clearBoard);
+}
+
+const playerSelect = document.getElementById("numOfPlayers");
+const player2card = document.getElementById("player2Title");
+playerSelect.addEventListener("change", selectPlayer);
+function selectPlayer(event) {
+  if (event.target.value === "2") {
+    player2card.style.display = "initial";
+  } else {
+    player2card.style.display = "none";
+  }
+}
