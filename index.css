@@ -1,0 +1,67 @@
+.title {
+  text-align: center;
+  border-top: solid black 2px;
+  border-bottom: solid black 2px;
+  font-size: 100px;
+  margin-block-end: 20px;
+  margin-block-start: 20px;
+}
+
+main {
+  display: flex;
+}
+
+.gameArea {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-right: solid black 1px;
+  align-items: center;
+}
+
+.gameBoard {
+  margin: 10px;
+}
+
+.gameControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  margin: 20px;
+  /* border: solid 1px black; */
+}
+
+td {
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  font-size: 90px;
+  background-color: gray;
+  border-radius: 15px;
+  padding: ;
+}
+
+.playerArea {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-left: solid black 1px;
+}
+
+.playerCard {
+  display: flex;
+  flex-direction: row;
+  border: solid 2px black;
+  margin: 15px;
+  border-radius: 15px;
+}
+
+.playerInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.playerTitle {
+  text-align: center;
+}
