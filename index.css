@@ -15,7 +15,7 @@ main {
   display: flex;
   flex-direction: column;
   width: 50%;
-  /* border-right: solid black 1px; */
+
   align-items: center;
 }
 
@@ -23,13 +23,20 @@ main {
   margin: 10px;
 }
 
+.gameControlsTitle {
+  text-align: center;
+}
+
 .gameControls {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  margin: 20px;
-  /* border: solid 1px black; */
+  justify-content: space-between;
+
+  margin: 15px;
+  border: solid 2px black;
+  border-radius: 15px;
+  align-items: center;
+  padding-right: 20px;
 }
 
 td {
@@ -37,15 +44,15 @@ td {
   width: 150px;
   text-align: center;
   font-size: 90px;
-  background-color: gray;
-  border-radius: 15px;
+  background-color: white;
+
+  border: solid 1px black;
 }
 
 .playerArea {
   display: flex;
   flex-direction: column;
   width: 50%;
-  /* border-left: solid black 1px; */
 }
 
 .playerCard {
@@ -67,4 +74,22 @@ td {
 #player2Title {
   text-align: center;
   display: none;
+}
+
+#cpuTitle {
+  text-align: center;
+}
+button {
+  height: auto;
+  width: auto;
+  margin-left: 15px;
+}
+
+li {
+  list-style-type: none;
+  text-align: left;
+}
+
+ul {
+  padding-inline-start: 20px;
 }

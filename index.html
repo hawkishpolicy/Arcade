@@ -15,35 +15,49 @@
     <main>
       <div class="gameArea">
         <table id="gameBoard"></table>
-        <div class="gameControls">
-          <span
-            >Number of Players:
-            <select id="numOfPlayers">
-              <option value="1">1</option>
-              <option value="2">2</option>
-            </select></span
-          >
-          <button id="reset">RESET</button>
-          <button id="newGame">New Game</button>
-        </div>
       </div>
       <div class="playerArea">
+        <h2 class="gameControlsTitle">Game Controls</h2>
+        <div class="gameControls">
+          <div class="playerInfo">
+          <ul>
+            <li>Number of Players: <span><select id="numOfPlayers">
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select></span>
+            </li>
+          </div>
+          <button id="newGame">New Game</button>
+          <button id="reset">RESET</button>
+        </div>
         <div id="player1Title">
-          <h2>Player 1</h2>
+          <h2 id="player1CardName">Player 1</h2>
           <div class="playerCard">
             <div class="playerInfo">
               <ul>
+                <input type = "text" id="player1Name" placeholder="Enter Name"><span><button id="nameEnter1">Enter</button></span>
                 <li>Score: <span id="player1Score">0</span></li>
               </ul>
             </div>
           </div>
         </div>
         <div id="player2Title">
-          <h2>Player 2</h2>
+          <h2 id ="player2CardName">Player 2</h2>
           <div class="playerCard">
             <div class="playerInfo">
               <ul>
+                <input type = "text" id="player2Name" placeholder="Enter Name"><span><button id = "nameEnter2">Enter</button></span>
                 <li>Score: <span id="player2Score">0</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="cpuTitle">
+          <h2>CPU</h2>
+          <div class="playerCard">
+            <div class="playerInfo">
+              <ul>
+                <li>Score: <span id="cpuScore">0</span></li>
               </ul>
             </div>
           </div>
