@@ -33,60 +33,73 @@ function updateScore(winningPlayer) {
 }
 function whoWon() {
   if (
+    actualBoard[0][0] != undefined &&
     actualBoard[0][0] === actualBoard[0][1] &&
-    actualBoard[0][0] === actualBoard[0][2] &&
-    actualBoard[0][1] === actualBoard[0][2]
+    actualBoard[0][0] === actualBoard[0][2]
   ) {
     return actualBoard[0][0];
   }
   if (
+    actualBoard[1][0] != undefined &&
     actualBoard[1][0] === actualBoard[1][1] &&
-    actualBoard[1][0] === actualBoard[1][2] &&
-    actualBoard[1][1] === actualBoard[1][2]
+    actualBoard[1][0] === actualBoard[1][2]
   ) {
-    return actualBoard[1][0];
+    return actualBoard[1][1];
   }
   if (
+    actualBoard[2][0] != undefined &&
     actualBoard[2][0] === actualBoard[2][1] &&
-    actualBoard[2][0] === actualBoard[2][2] &&
-    actualBoard[2][1] === actualBoard[2][2]
+    actualBoard[2][0] === actualBoard[2][2]
   ) {
     return actualBoard[2][0];
   }
   if (
+    actualBoard[0][0] != undefined &&
     actualBoard[0][0] === actualBoard[1][0] &&
-    actualBoard[0][0] === actualBoard[2][0] &&
-    actualBoard[1][0] === actualBoard[2][0]
+    actualBoard[0][0] === actualBoard[2][0]
   ) {
     return actualBoard[0][0];
   }
   if (
+    actualBoard[0][1] != undefined &&
     actualBoard[0][1] === actualBoard[1][1] &&
-    actualBoard[0][1] === actualBoard[2][1] &&
-    actualBoard[1][1] === actualBoard[2][1]
+    actualBoard[0][1] === actualBoard[2][1]
   ) {
     return actualBoard[0][1];
   }
   if (
+    actualBoard[0][2] != undefined &&
     actualBoard[0][2] === actualBoard[1][2] &&
-    actualBoard[0][2] === actualBoard[2][2] &&
-    actualBoard[1][2] === actualBoard[2][2]
+    actualBoard[0][2] === actualBoard[2][2]
   ) {
     return actualBoard[0][2];
   }
   if (
+    actualBoard[0][0] != undefined &&
     actualBoard[0][0] === actualBoard[1][1] &&
-    actualBoard[0][0] === actualBoard[2][2] &&
-    actualBoard[1][1] === actualBoard[2][2]
+    actualBoard[0][0] === actualBoard[2][2]
   ) {
     return actualBoard[0][0];
   }
   if (
+    actualBoard[0][2] != undefined &&
     actualBoard[0][2] === actualBoard[1][1] &&
-    actualBoard[0][2] === actualBoard[2][0] &&
-    actualBoard[1][1] === actualBoard[2][0]
+    actualBoard[0][2] === actualBoard[2][0]
   ) {
     return actualBoard[0][2];
+  }
+  if (
+    actualBoard[0][0] != undefined &&
+    actualBoard[0][1] != undefined &&
+    actualBoard[0][2] != undefined &&
+    actualBoard[1][0] != undefined &&
+    actualBoard[1][1] != undefined &&
+    actualBoard[1][2] != undefined &&
+    actualBoard[2][0] != undefined &&
+    actualBoard[2][1] != undefined &&
+    actualBoard[2][2] != undefined
+  ) {
+    return "CAT";
   }
   return undefined;
 }
@@ -137,22 +150,26 @@ function newGame() {
           cell.innerText = currentTurn;
           let winningPlayer = whoWon();
 
-          if (winningPlayer) {
+          if (winningPlayer && winningPlayer != "CAT") {
             alert("Congratulations " + winningPlayer + " !!!");
             updateScore(winningPlayer);
+          } else if (winningPlayer === "CAT") {
+            alert("The CAT got ya!!");
           } else {
             toggleTurn();
           }
         }
 
-        if (playerSelect.value === "1") {
+        if (playerSelect.value === "1" && cell.innerText === "") {
           actualBoard[i][k] = currentTurn;
           cell.innerText = currentTurn;
           let winningPlayer = whoWon();
 
-          if (winningPlayer) {
+          if (winningPlayer && winningPlayer != "CAT") {
             alert("Congratulations " + winningPlayer + " !!!");
             updateScore(winningPlayer);
+          } else if (winningPlayer === "CAT") {
+            alert("The CAT got ya!!");
           } else {
             playCPU();
           }
@@ -160,7 +177,6 @@ function newGame() {
       });
     }
   }
-
   newGameButton.style.display = "none";
 }
 const newGameButton = document.getElementById("newGame");
@@ -185,10 +201,12 @@ const nameButton2 = document.getElementById("nameEnter2");
 
 function updateName1() {
   title1.innerHTML = txt1.value;
+  txt1.value = null;
 }
 
 function updateName2() {
   title2.innerHTML = txt2.value;
+  txt2.value = null;
 }
 nameButton1.addEventListener("click", updateName1);
 nameButton2.addEventListener("click", updateName2);
